@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.TimeZone;
 
 @Service
-public record TaskSchedulingService(TaskScheduler taskScheduler) implements TaskService {
+public record TaskServiceImpl(TaskScheduler taskScheduler) implements TaskService {
     @Override
     public void schedule(TaskDefinition taskDefinition, Runnable runnable) {
         CronTrigger cronTrigger = new CronTrigger(taskDefinition.cronExpression(), TimeZone.getTimeZone(TimeZone.getDefault().getID()));
