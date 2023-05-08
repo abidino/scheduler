@@ -13,7 +13,7 @@ import java.util.concurrent.ScheduledFuture;
 @Service
 public record TaskServiceImpl(TaskScheduler taskScheduler) implements TaskService {
 
-    private static Map<String,ScheduledFuture<?>> taskMap = new HashMap<>();
+    private static Map<String, ScheduledFuture<?>> taskMap = new HashMap<>();
 
     @Override
     public void addTask(TaskDefinition taskDefinition, Runnable runnable) {
@@ -21,10 +21,11 @@ public record TaskServiceImpl(TaskScheduler taskScheduler) implements TaskServic
         ScheduledFuture<?> schedule = taskScheduler.schedule(runnable, cronTrigger);
         taskMap.put(taskDefinition.id(), schedule);
     }
+
     @Override
-    public void removeTask(String taskId){
+    public void removeTask(String taskId) {
         ScheduledFuture<?> scheduledFuture = taskMap.get(taskId);
-        if (Objects.nonNull(scheduledFuture)){
+        if (Objects.nonNull(scheduledFuture)) {
             scheduledFuture.cancel(true);
             taskMap.remove(taskId);
         }

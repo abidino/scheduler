@@ -9,7 +9,7 @@ public record TaskController(TaskFacadeService taskFacadeService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    void schedule(@RequestBody TaskDefinition taskDefinition){
+    void schedule(@RequestBody TaskDefinition taskDefinition) {
         taskFacadeService.schedule(taskDefinition);
     }
 }

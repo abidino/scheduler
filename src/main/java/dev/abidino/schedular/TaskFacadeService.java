@@ -3,17 +3,19 @@ package dev.abidino.schedular;
 import org.springframework.stereotype.Service;
 
 @Service
-public record TaskFacadeService(TaskService taskService) {
+public record TaskFacadeService(TaskService taskService, PdfService pdfService, ExcelService excelService) {
     public void schedule(TaskDefinition taskDefinition) {
-        switch (taskDefinition.taskType()){
+        switch (taskDefinition.taskType()) {
             case PDF -> {
-                Runnable pdfTaskService = new PdfTaskService(taskDefinition);
+                Runnable pdfTaskService = pdfService.createTask(taskDefinition);
                 taskService.addTask(taskDefinition, pdfTaskService);
             }
+
             case EXCEL -> {
-                Runnable excelTaskService = new ExcelTaskService(taskDefinition);
+                Runnable excelTaskService = excelService.createTask(taskDefinition);
                 taskService.addTask(taskDefinition, excelTaskService);
             }
+            default -> throw new IllegalStateException("Unexpected value: " + taskDefinition.taskType());
         }
     }
 }
