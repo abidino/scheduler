@@ -1,11 +1,13 @@
 package dev.abidino.schedular;
 
+import com.google.gson.Gson;
+import dev.abidino.schedular.kafka.MessageService;
 import org.springframework.stereotype.Service;
 
 @Service
-public record PdfService(SomeDependency someDependency) {
+public record PdfService(MessageService messageService, Gson gson) {
 
     Runnable createTask(TaskDefinition taskDefinition) {
-        return () -> someDependency.log("pdf : " + taskDefinition.data());
+        return () -> messageService.sendMessage("test-topic", gson.toJson(taskDefinition));
     }
 }
