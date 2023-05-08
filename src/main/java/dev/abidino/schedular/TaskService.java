@@ -1,5 +1,6 @@
 package dev.abidino.schedular;
 
 public interface TaskService {
-    void schedule(TaskDefinition taskDefinition, Runnable runnable);
+    void addTask(TaskDefinition taskDefinition, Runnable runnable);
+    void removeTask(String taskId);
 }

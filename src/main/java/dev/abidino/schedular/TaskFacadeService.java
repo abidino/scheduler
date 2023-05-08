@@ -8,11 +8,11 @@ public record TaskFacadeService(TaskService taskService) {
         switch (taskDefinition.taskType()){
             case PDF -> {
                 Runnable pdfTaskService = new PdfTaskService(taskDefinition);
-                taskService.schedule(taskDefinition, pdfTaskService);
+                taskService.addTask(taskDefinition, pdfTaskService);
             }
             case EXCEL -> {
                 Runnable excelTaskService = new ExcelTaskService(taskDefinition);
-                taskService.schedule(taskDefinition, excelTaskService);
+                taskService.addTask(taskDefinition, excelTaskService);
             }
         }
     }
