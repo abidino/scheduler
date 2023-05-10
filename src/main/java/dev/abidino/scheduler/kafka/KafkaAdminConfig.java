@@ -1,4 +1,4 @@
-package dev.abidino.schedular.kafka;
+package dev.abidino.scheduler.kafka;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -17,8 +17,12 @@ public class KafkaAdminConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String kafkaAddress;
 
-    @Value("${spring.kafka.topic-name}")
-    private String topic;
+    @Value("${spring.kafka.excel-topic-name}")
+    private String excelTopic;
+
+    @Value("${spring.kafka.csv-topic-name}")
+    private String csvTopic;
+
 
     @Bean
     public KafkaAdmin admin() {
@@ -28,8 +32,16 @@ public class KafkaAdminConfig {
     }
 
     @Bean
-    public NewTopic topic() {
-        return TopicBuilder.name(topic)
+    public NewTopic excelTopic() {
+        return TopicBuilder.name(excelTopic)
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic csvTopic() {
+        return TopicBuilder.name(csvTopic)
                 .partitions(1)
                 .replicas(1)
                 .build();

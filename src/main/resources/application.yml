@@ -1,7 +1,15 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://db.acjpvneqfoibeyaykmlj.supabase.co:5432/postgres
+    username: postgres
+    password: vq6xxbeW8CmncO3a
+  jpa:
+    hibernate:
+      ddl-auto: none
   kafka:
     bootstrap-servers: localhost:9092
-    topic-name: test-topic
+    excel-topic-name: excel-topic
+    csv-topic-name: csv-topic
     consumer:
       bootstrap-servers: localhost:9092
       auto-offset-reset: earliest
@@ -12,3 +20,4 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
