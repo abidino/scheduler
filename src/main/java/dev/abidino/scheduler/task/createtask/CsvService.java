@@ -2,7 +2,7 @@ package dev.abidino.scheduler.task.createtask;
 
 import com.google.gson.Gson;
 import dev.abidino.scheduler.business.TaskDefinition;
-import dev.abidino.scheduler.kafka.MessageService;
+import dev.abidino.scheduler.message.MessageService;
 import org.springframework.stereotype.Service;
 
 @Service

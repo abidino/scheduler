@@ -21,7 +21,7 @@ record TaskProcessImpl(TaskScheduler taskScheduler) implements TaskProcess {
         CronTrigger cronTrigger = new CronTrigger(taskDefinition.cronExpression(), TimeZone.getTimeZone(TimeZone.getDefault().getID()));
         ScheduledFuture<?> schedule = taskScheduler.schedule(runnable, cronTrigger);
         if (Objects.isNull(taskDefinition.id())) {
-            throw new IllegalArgumentException("Id must not null");
+            throw new IllegalArgumentException("Id must be not null");
         }
         taskMap.put(taskDefinition.id(), schedule);
     }

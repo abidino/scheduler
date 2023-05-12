@@ -1,4 +1,4 @@
-package dev.abidino.scheduler.kafka;
+package dev.abidino.scheduler.message.kafka;
 
 import com.google.gson.Gson;
 import dev.abidino.scheduler.business.TaskDefinition;

@@ -1,4 +1,4 @@
-package dev.abidino.scheduler.kafka;
+package dev.abidino.scheduler.message.kafka;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

@@ -1,7 +1,7 @@
 package dev.abidino.scheduler.business;
 
 import dev.abidino.scheduler.data.DataService;
-import dev.abidino.scheduler.data.TaskDefinitionEntity;
+import dev.abidino.scheduler.data.repo.TaskDefinitionEntity;
 import dev.abidino.scheduler.task.TaskFacadeService;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;

@@ -1,4 +1,4 @@
-package dev.abidino.scheduler.data;
+package dev.abidino.scheduler.data.repo;
 
 import dev.abidino.scheduler.business.TaskDefinition;
 import dev.abidino.scheduler.business.TaskStatus;

@@ -1,6 +1,7 @@
 package dev.abidino.scheduler.data;
 
 import dev.abidino.scheduler.business.TaskStatus;
+import dev.abidino.scheduler.data.repo.TaskDefinitionEntity;
 
 import java.util.List;
 

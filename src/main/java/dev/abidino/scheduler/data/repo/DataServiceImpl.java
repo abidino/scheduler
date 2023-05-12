@@ -1,6 +1,7 @@
-package dev.abidino.scheduler.data;
+package dev.abidino.scheduler.data.repo;
 
 import dev.abidino.scheduler.business.TaskStatus;
+import dev.abidino.scheduler.data.DataService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
