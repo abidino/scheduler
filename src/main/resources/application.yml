@@ -5,7 +5,7 @@ spring:
     password: vq6xxbeW8CmncO3a
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   kafka:
     bootstrap-servers: localhost:9092
     excel-topic-name: excel-topic
@@ -20,4 +20,13 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    exchange: test-exchange
+    excel-queue-name: excel-test
+    csv-queue-name: csv-test
+    excel-routing-keys: excel-test-key
+    csv-routing-keys: csv-test-key

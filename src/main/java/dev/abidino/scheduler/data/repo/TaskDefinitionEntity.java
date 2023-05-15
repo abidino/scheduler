@@ -13,9 +13,11 @@ public class TaskDefinitionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cronExpression;
+    @Enumerated(EnumType.STRING)
     private TaskType taskType;
     private String data;
 
+    @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
 
     public TaskDefinitionEntity(Long id, String cronExpression, TaskType taskType, String data, TaskStatus taskStatus) {

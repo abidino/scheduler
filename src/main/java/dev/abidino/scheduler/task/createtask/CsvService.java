@@ -3,12 +3,14 @@ package dev.abidino.scheduler.task.createtask;
 import com.google.gson.Gson;
 import dev.abidino.scheduler.business.TaskDefinition;
 import dev.abidino.scheduler.message.MessageService;
+import org.springframework.amqp.core.Binding;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CsvService(MessageService messageService, Gson gson) implements CreationTaskService {
+public record CsvService(MessageService rabbitService, Gson gson, Binding csvBinding) implements CreationTaskService {
+
     @Override
     public Runnable createTask(TaskDefinition taskDefinition) {
-        return () -> messageService.sendMessage("csv-topic", gson.toJson(taskDefinition));
+        return () -> rabbitService.sendMessage(csvBinding.getRoutingKey(), gson.toJson(taskDefinition.data()));
     }
 }
